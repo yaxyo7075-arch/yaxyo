@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL | Cyber Security</title>
+    <style>
+        /* CSS - Dizayn qismi */
+        body {
+            background-color: #050505;
+            color: #00ff41; /* Hakerlar yashil rangi */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #login-container {
+            border: 2px solid #00ff41;
+            padding: 30px;
+            box-shadow: 0 0 20px #00ff41;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10;
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; }
+
+        input {
+            background: black;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 15px;
+            outline: none;
+            font-size: 1.2rem;
+        }
+
+        button {
+            background: #00ff41;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: white;
+            box-shadow: 0 0 15px white;
+        }
+
+        /* Dashboard yashirin bo'ladi */
+        #dashboard {
+            display: none;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border: 1px solid #ff0000;
+            box-shadow: 0 0 15px #ff0000;
+            color: #ff0000;
+        }
+
+        .glitch { animation: glitch 1s infinite; }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-container">
+        <h1 class="glitch">SYSTEM TERMINAL v2.0</h1>
+        <p>Access Level: Admin Only</p>
+        <input type="password" id="password" placeholder="ENTER ACCESS CODE...">
+        <br>
+        <button onclick="checkAccess()">LOGIN</button>
+        <p id="error-msg" style="color: red; display: none;">ACCESS DENIED! LOGGING IP...</p>
+    </div>
+
+    <div id="dashboard">
+        <h1 style="color: #ff0000;">[ CONFIDENTIAL DATABASE ]</h1>
+        <hr border="1" color="red">
+        <ul>
+            <li>> Server Status: <span style="color: white;">Compromised</span></li>
+            <li>> Network Traffic: <span style="color: white;">Intercepted</span></li>
+            <li>> Encryption Key: <span style="color: white;">AES-256-GCM</span></li>
+        </ul>
+        <p>Tizimga muvaffaqiyatli kirdingiz. Kiber xavfsizlik bo'yicha darslarni boshlang.</p>
+        <button onclick="location.reload()" style="background: red;">LOGOUT</button>
+    </div>
+
+    <script>
+        function checkAccess() {
+            const pass = document.getElementById('password').value;
+            const correctPass = "admin123"; // SHU YERDA PAROLNI O'ZGARTIRING
+
+            if (pass === correctPass) {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                document.body.style.backgroundColor = "#1a0000"; // Fon rangi o'zgaradi
+            } else {
+                const error = document.getElementById('error-msg');
+                error.style.display = 'block';
+                document.getElementById('password').value = "";
+            }
+        }
+    </script>
+</body>
+</html>
